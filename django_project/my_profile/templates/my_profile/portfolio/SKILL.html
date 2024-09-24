@@ -1,0 +1,83 @@
+<style>
+    .skill-card {
+        border: 2px solid #b0b1b4;
+        border-radius: 20px;
+        padding: 10px;
+        margin-bottom: 20px;
+    }
+
+    .skill-card img {
+        width: 100px;
+        height: 100px;
+        border: 1px solid #ccc;
+    }
+    .skill-card img.selected {
+        border: 3px solid #0d6efd; 
+    }
+
+    .skill-description {
+        height: 100px;
+        border: 1px solid #ccc;
+        padding: 10px;
+        background-color: #e9ecef;
+    }
+</style>
+
+<div class="container mt-4">
+    {% for category, skill_dict in skills.items %}
+    <div class="row">
+        <div class="col-12">
+            <div class="skill-card p-3">
+                    <h3 class="text-center">{{ category }}</h3>
+                    <div class="d-flex flex-wrap justify-content-center gap-3">
+                        {% for name, image in skill_dict.items %}
+                            <img src="{{ image.url }}" alt="Skill {{ forloop.counter }}" 
+                                class="skill-icon {% if forloop.first %}selected{% endif %}" 
+                                onclick="showDescription('{{ name }}', this)"
+                            >
+                        {% endfor %}
+                    </div>
+                    <!-- カテゴリごとの詳細説明枠 -->
+                    <div id="description-{{ category }}" class="skill-description mt-3">
+                        {% for name, image in skill_dict.items %}
+                            <!-- 初期表示は最初のスキル名を表示 -->
+                            {% if forloop.first %}{{ name }}{% endif %}
+                        {% endfor %}
+                    </div>
+                
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+<!-- JavaScript -->
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        function showDescription(name, icon) {
+            // 選択されたカテゴリ内の説明枠を取得
+            var descriptionBox = icon.closest('.skill-card').querySelector('[id^="description-"]');
+            
+            // 説明枠の内容を選択されたスキル名に置き換え
+            descriptionBox.textContent = name;
+
+            // 選択されたカテゴリ内のアイコンを処理
+            var icons = icon.closest('.skill-card').querySelectorAll('.skill-icon');
+            icons.forEach(function (icon) {
+                icon.classList.remove('selected');  // 選択された状態を解除
+            });
+
+            // 選択されたアイコンにクラスを追加
+            icon.classList.add('selected');  // 新しい選択アイコンを強調表示
+        }
+
+        // クリックイベントの設定
+        var skillIcons = document.querySelectorAll('.skill-icon');
+        skillIcons.forEach(function (icon) {
+            icon.addEventListener('click', function() {
+                var skillName = this.getAttribute('onclick').split("'")[1]; // 選択されたスキル名を取得
+                showDescription(skillName, this);
+            });
+        });
+    });
+</script>

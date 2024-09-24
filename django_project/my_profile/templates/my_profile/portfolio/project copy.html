@@ -1,0 +1,99 @@
+<!-- CSS定義 -->
+<style>
+    .container {
+        display: flex;
+        flex-direction: column;
+        width: 70%;
+        max-width: 800px;
+        align-items: center;
+        justify-items: center;
+        margin: 0 auto;
+        height: 500px;
+        overflow: auto;
+    }
+    /* プロジェクトコンテナのスタイル */
+    .project-container {
+        max-width: 800px;
+        width: 70%;
+        margin: 1px auto;
+        padding: 20px;
+        background-color: #fff;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    /* タイトル部分のスタイル */
+    .project-title {
+        font-size: 24px;
+        font-weight: bold;
+        color: #333;
+        margin-bottom: 10px;
+    }
+
+    /* 各プロジェクト詳細部分のスタイル */
+    .project-detail {
+        font-size: 16px;
+        color: #444;
+        margin-bottom: 1px;
+    }
+
+    .project-detail span {
+        font-weight: bold;
+        margin-right: 10px;
+    }
+
+    /* 詳細リンクのスタイル */
+    .project-link {
+        display: inline-block;
+        margin-top: 15px;
+        font-size: 16px;
+        color: #1e90ff;
+        text-decoration: none;
+    }
+
+    .project-link:hover {
+        text-decoration: underline;
+    }
+</style>
+
+<!-- Javascript定義 -->
+<script>
+
+</script>
+
+<!-- Html定義 -->
+<div class="content-container">
+    <h1>Project</h1>
+    <div class="container">
+        <!-- プロジェクトリスト -->
+        <div class="project-container">
+            <div class="project-title">プロジェクト名： Z社 基幹システムリプレース</div>
+            <div class="project-detail"><span>背景：</span>ACCESS管理から基幹システムへリプレース</div>
+            <div class="project-detail"><span>工程：</span>詳細設計、基本設計、実装、単体テスト、結合テスト、運用保守</div>
+            <div class="project-detail"><span>言語：</span>VB.NET, ASP.NET</div>
+            <div class="project-detail"><span>データベース：</span>SQLServer</div>
+            <a href="#" class="project-link">詳細を見る</a>
+        </div>
+
+        <!-- プロジェクト2のサンプル -->
+        <div class="project-container">
+            <div class="project-title">プロジェクト名： A社 販売管理システム改修</div>
+            <div class="project-detail"><span>背景：</span>販売データ管理の効率化を目指したシステム改修</div>
+            <div class="project-detail"><span>工程：</span>要件定義、基本設計、プログラム開発、テスト、リリース</div>
+            <div class="project-detail"><span>言語：</span>Java, Spring Framework</div>
+            <div class="project-detail"><span>データベース：</span>MySQL</div>
+            <a href="#" class="project-link">詳細を見る</a>
+        </div>
+
+        <!-- プロジェクト3のサンプル -->
+        <div class="project-container">
+            <div class="project-title">プロジェクト名： B社 人事管理システム構築</div>
+            <div class="project-detail"><span>背景：</span>既存のExcelベースの人事管理をWebシステムへ移行</div>
+            <div class="project-detail"><span>工程：</span>設計、開発、テスト、導入、保守</div>
+            <div class="project-detail"><span>言語：</span>Python, Django</div>
+            <div class="project-detail"><span>データベース：</span>PostgreSQL</div>
+            <a href="#" class="project-link">詳細を見る</a>
+        </div>
+    </div>
+</div>

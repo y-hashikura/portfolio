@@ -1,0 +1,61 @@
+{% load static %}
+{% load custom_tags %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'my_profile/css/styles.css' %}">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="{% static 'my_profile/js/app.js' %}"></script>
+    <title>ポートフォリオ</title>
+</head>
+<body>
+    <!-- ヘッダー設定 -->
+    <header>
+        <div class="profile-section text-center">
+            <img src="" alt="Profile Image">
+        </div>
+    </header>
+    <div class="nav-container">
+        <nav>
+            <ul class="nav justify-content-center">
+                {% for name, image in menu %}
+                    <li class="nav-item">
+                        <a class="nav-link text-white fs-3" href="#">
+                            <img src="" alt="" class="menu-icon">
+                            {{ name }}
+                        </a>
+                    </li>
+                {% endfor %}
+            </ul>
+        </nav>
+    </div>
+    <!-- メイン設定 -->
+    <main>
+        <!-- メニューリンク分処理を繰り返す -->
+        {% for name, image in menu %}
+            <!-- メインコンテナ設定 -->
+            <div class="container-fluid mt-5 text-center">
+                <!-- タイトル --> 
+                <a class="fs-1 text-black" href="#" style="text-decoration: none;">
+                    <img src="" alt="#" class="content-icon" style="border: 1px solid;">
+                    {{ name }}
+                </a>
+                <!-- 各コンテンツの設定内容 -->
+                {% render_dynamic_template name context %}
+            </div>
+    
+        {% endfor %}
+    </main>
+
+    <!-- フッター設定 -->
+    <footer class="bg-dark text-white text-center py-3 mt-auto">
+        <div class="container" style="height: 50px;">
+            <p class="mb-1">&copy; 2024 Yoshiki Hashikura My Portfolio.</p>
+        </div>
+    </footer>
+</body>
+</html>

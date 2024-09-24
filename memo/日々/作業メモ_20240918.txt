@@ -1,0 +1,15 @@
+■マイグレーション再実行手順
+
+
+マイグレーションフォルダ内のinit以外のファイル削除
+
+db.sqllite3ファイルを削除
+
+マイグレーションを再実行
+python manage.py makemigrations my_profile
+マイグレート実行
+ python manage.py migrate
+
+
+管理者ユーザが消えている場合
+python manage.py createsuperuser 

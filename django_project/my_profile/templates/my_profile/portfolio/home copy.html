@@ -1,0 +1,17 @@
+{% extends 'my_profile/base/base.html' %}
+
+{% block body %}
+    <main>
+        <!-- Home部分 -->
+        {% include 'my_profile/portfolio/my_profile.html' %}
+
+        <!-- Historyy部分 -->
+        {% include 'my_profile/portfolio/my_history.html' %}
+        
+        <!-- Skill部分 -->
+        {% include 'my_profile/portfolio/skill.html' %}
+
+        <!-- Project部分 -->
+        {% include 'my_profile/portfolio/project.html' %}
+    </main>
+{% endblock %}

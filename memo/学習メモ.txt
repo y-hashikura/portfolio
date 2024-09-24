@@ -1,0 +1,25 @@
+■htmlのblockについて
+　⇒{% block ○○ %}の○○は任意の名前としてベースのhtmlで定義したらサブのhtmlでオーバライドする感じで扱える
+
+■load staticについて
+　⇒{% load static %}はDjangoのテンプレートエンジン特有のタグであり、Djangoのプロジェクト内で静的ファイル（CSS、JavaScript、画像など）を扱うために必要
+　⇒パスを書くときは仮にアプリケーションフォルダ毎にcssが存在しているならパスの指定の最初のディレクトリをアプリケーションフォルダにすれば
+　　あとはdjango側でやってくれるんやね。
+
+■djangoの自動検索について
+　⇒djangoはtemplatesやstaticを自動で検索してくれるがプロジェクトフォルダから順番に検索するが故
+　　まったく同じフォルダ構成で別アプリケーション事に存在していると衝突する可能性があるので
+　　staticやtemplatesの下にさらにアプリケーション名と同じフォルダを作成することが推奨されているらしい
+　　app1/static/app1/css/stylesheet.csvみたいな
+　　app1/templates/app1/home.htmlみたいな
+
+■{% url ○○ %}
+　⇒○○はurls.pyのname=""の部分と一致している必要があるし、それぞれすべてマッピングがされていないと起動時エラーとなるよ
+
+
+- my_profile
+    - feature
+        - home
+            - templates
+                - home
+                    - home.html

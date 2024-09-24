@@ -1,0 +1,59 @@
+/* 初期状態でメニューは固定されない */
+.nav-container {
+    width: 100%;
+    background-color: #1e1b1b;
+    z-index: 1000;
+}
+
+/* スクロール時にメニューリンクを固定する */
+.nav-container.fixed {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+}
+
+/* メニューアイコン */
+.menu-icon {
+    width: 30px;
+    height: 30px;
+    margin-right: 10px;
+}
+
+/* プロフィール画像の高さ分のパディングを追加 */
+body {
+    padding-top: 0;
+}
+
+/* プロフィール画像部分 */
+.profile-section {
+    height: 200px;
+    background-color: #1e1b1b;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.profile-section img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    border: 5px solid white;
+}
+
+/* メインコンテンツのマージン */
+.main-content {
+    margin-top: 50px;
+}
+
+.content-icon {
+    width: 10px;
+    height: 10px;
+    margin-right: 10px;
+}
+
+.skill-icon {
+    width: 50px;
+    height: 50px;
+    border-radius: 5px;
+}
