@@ -72,10 +72,11 @@ class SkillLevelModel(models.Model):
     """
     スキルレベル
     """
-    name = models.CharField(max_length=100, verbose_name="スキルレベル")
+    # 1~5で習熟度を管理
+    name = models.IntegerField(verbose_name="スキルレベル")
     
     def __str__(self):
-        return self.name
+        return str(self.name)
     
 class SkillPeriodModel(models.Model):
     """
@@ -94,7 +95,7 @@ class SkillModel(models.Model):
     name = models.ForeignKey(SkillNameModel, on_delete=models.CASCADE, verbose_name="スキル名")
     level = models.ForeignKey(SkillLevelModel, on_delete=models.CASCADE, verbose_name="スキルレベル")
     period = models.ForeignKey(SkillPeriodModel, on_delete=models.CASCADE, verbose_name="スキル使用期間")
-    image_path = models.ImageField(upload_to="images/" , null=True, verbose_name="ロゴ画像パス")
+    image_path = models.ImageField(upload_to="images/" , blank=True, null=True, verbose_name="ロゴ画像パス")
 
 class PositionModel(models.Model):
     """
@@ -109,15 +110,26 @@ class ProjectModel(models.Model):
     """
     プロジェクトを管理するモデル
     """
+    # プロジェクト名、概要、期間、役割、技術スタック
+    
     name = models.CharField(max_length=100, verbose_name="プロジェクト名")
-    back_ground = models.TextField(max_length=1000, verbose_name="背景")
     overview = models.TextField(max_length=1000, verbose_name="概要")
-    period_from = models.DateField(verbose_name="期間開始")
-    period_to = models.DateField(verbose_name="期間終了")
-    skill_categorys = models.ManyToManyField(SkillCategoryModel, related_name="projects_skill_category", verbose_name="スキルカテゴリ名")
+    back_ground = models.TextField(max_length=1000, verbose_name="背景")
+    period_from = models.DateField(blank=True, null=True,verbose_name="期間開始")
+    period_to = models.DateField(blank=True, null=True, verbose_name="期間終了")
     skill_names = models.ManyToManyField(SkillNameModel, related_name="projects_skill_name", verbose_name="スキル名")
     position = models.ForeignKey(PositionModel, on_delete=models.CASCADE, verbose_name="ポジション名")
     scale = models.CharField(max_length=100, verbose_name="規模")
+    descriptions1 = models.CharField(blank=True, null=True, max_length=100, verbose_name="詳細業務内容1")
+    descriptions2 = models.CharField(blank=True, null=True, max_length=100, verbose_name="詳細業務内容2")
+    descriptions3 = models.CharField(blank=True, null=True, max_length=100, verbose_name="詳細業務内容3")
+    descriptions4 = models.CharField(blank=True, null=True, max_length=100, verbose_name="詳細業務内容4")
+    descriptions5 = models.CharField(blank=True, null=True, max_length=100, verbose_name="詳細業務内容5")
+    descriptions6 = models.CharField(blank=True, null=True, max_length=100, verbose_name="詳細業務内容6")
+    descriptions7 = models.CharField(blank=True, null=True, max_length=100, verbose_name="詳細業務内容7")
+    descriptions8 = models.CharField(blank=True, null=True, max_length=100, verbose_name="詳細業務内容8")
+    descriptions9 = models.CharField(blank=True, null=True, max_length=100, verbose_name="詳細業務内容9")
+    descriptions10 = models.CharField(blank=True, null=True, max_length=100, verbose_name="詳細業務内容10")
     
     def __str__(self):
         return self.name
@@ -128,7 +140,7 @@ class MenuModel(models.Model):
     メニューリンクを管理するモデル
     """
     name = models.CharField(max_length=20, verbose_name="メニュー名")
-    image = models.ImageField(upload_to="images/" , null=True, verbose_name="メニュー画像")
+    image = models.ImageField(upload_to="images/" , blank=True, null=True, verbose_name="メニュー画像")
     
     def __str__(self):
         return self.name

@@ -4,9 +4,11 @@ from .models import (
     SkillCategoryModel, 
     SkillNameModel, 
     SkillLevelModel, 
-    SkillPeriodModel, 
+    SkillPeriodModel,
+    SkillModel, 
     PositionModel,
     MyHistoryNameModel,
+    MyHistoryModel,
     MenuModel
 )
 
@@ -15,9 +17,10 @@ def get_skill_categorys() -> list[str]:
     スキルカテゴリ取得
     """
     return [
-        "言語", 
-        "DB", 
-        "FW", 
+        "バックエンド",
+        "フロントエンド", 
+        "データベース", 
+        "フレームワーク", 
         "クラウド", 
         "バージョン管理", 
         "テストツール", 
@@ -25,7 +28,9 @@ def get_skill_categorys() -> list[str]:
         "コンテナ/仮想化", 
         "WEBサーバ", 
         "コンポーネントライブラリ", 
-        "ETLツール"
+        "ETLツール",
+        "開発エディタ",
+        "その他"
     ]
 
 def get_skill_names() -> list[str]:
@@ -36,6 +41,7 @@ def get_skill_names() -> list[str]:
         "Python", 
         "VB.NET", 
         "Java", 
+        "PHP",
         "HTML", 
         "CSS", 
         "ASP.NET",
@@ -57,6 +63,12 @@ def get_skill_names() -> list[str]:
         "REST API", 
         "FastAPI", 
         "ASP.NET", 
+        "A5:SQL",
+        "VSCode",
+        "VS",
+        "SQLServer",
+        "Oracle",
+        "POSTGRESQL"
     ]
 
 def get_skill_periods() -> list[str]:
@@ -72,7 +84,7 @@ def get_skill_levels() -> list[str]:
     スキルレベル
     """
     return [
-        "初級", "中級", "上級"
+        1, 2, 3, 4, 5
     ]
 
 def get_positions() -> list[str]:
@@ -80,7 +92,7 @@ def get_positions() -> list[str]:
     ポジション
     """
     return [
-        "PG", "SE", "PL", "PM", "QA"
+        "フルスタックエンジニア", "バックエンドエンジニア", "フロントエンドエンジニア", "プロジェクトリーダ", "インフラエンジニア",
     ]
 
 def get_my_historys() -> list[str]:
@@ -90,7 +102,7 @@ def get_my_historys() -> list[str]:
     return [
         "2014年04月 大原簿記情報ビジネス専門学校 入学",
         "2016年04月 株式会社日立ソリューションズ・クリエイト (正社員)",
-        "2021年10月 株式会社ファーンリッジ・ジャパン (正社員)"
+        "2021年10月 株式会社ファーンリッジ・ジャパン (正社員)",
         "2022年01月 テクノブレイブ株式会社 (フリーランス)",
         "2022年11月 株式会社ゲオホールディングス (フリーランス)",
         "2024年04月 青山綜合会計事務所(フリーランス)",
@@ -100,13 +112,18 @@ def get_my_menu() -> list[str]:
     """
     メニューリンク
     """
-    return ["HOME", "HISTORY", "SKILL", "PROJECT", "ADMIN"]
+    return ["HOME", "HISTORY", "SKILL", "PROJECT"]
+
 
 @receiver(post_migrate)
 def initialize_data(sender, **kwargs):
     """
     マイグレーション実行後に初期データを挿入
     """
+    # メニューリンク
+    for menu in get_my_menu():
+        MenuModel.objects.update_or_create(name=menu)
+        
     # スキルカテゴリ登録
     for category in get_skill_categorys():
         SkillCategoryModel.objects.update_or_create(name=category)
@@ -123,6 +140,9 @@ def initialize_data(sender, **kwargs):
     for level in get_skill_levels():
         SkillLevelModel.objects.update_or_create(name=level)
         
+    # スキル一括登録
+    insert_SkillModel()
+        
     # ポジション
     for position in get_positions():
         PositionModel.objects.update_or_create(name=position)
@@ -131,6 +151,96 @@ def initialize_data(sender, **kwargs):
     for history_name in get_my_historys():
         MyHistoryNameModel.objects.update_or_create(name=history_name)
         
-    # メニューリンク
-    for menu in get_my_menu():
-        MenuModel.objects.update_or_create(name=menu)
+    # 歴史一括登録
+    insert_MyHistoryModel()
+    
+
+def insert_MyHistoryModel():
+    """
+    MyHisotryModelの一括登録
+    """
+    MyHistoryModel.objects.update_or_create(
+        name=MyHistoryNameModel.objects.get(id=1), # 大原
+        description="日商簿記二級 合格"
+    )
+    MyHistoryModel.objects.update_or_create(
+        name=MyHistoryNameModel.objects.get(id=1), # 大原
+        description="基本情報技術者試験 合格"
+    )
+    MyHistoryModel.objects.update_or_create(
+        name=MyHistoryNameModel.objects.get(id=1), # 大原
+        description="応用情報技術者試験 合格"
+    )
+    MyHistoryModel.objects.update_or_create(
+        name=MyHistoryNameModel.objects.get(id=2), # 日立
+        description="業務/WEBアプリケーション開発経験"
+    )
+    MyHistoryModel.objects.update_or_create(
+        name=MyHistoryNameModel.objects.get(id=2), # 日立
+        description="要件定義、設計、実装、テスト、本番切替、運用保守の一気通貫の開発経験"
+    )
+    MyHistoryModel.objects.update_or_create(
+        name=MyHistoryNameModel.objects.get(id=2), # 日立
+        description="主にVB.NET, ASP.NET, SQLServerで構築されたシステムの開発"
+    )
+    MyHistoryModel.objects.update_or_create(
+        name=MyHistoryNameModel.objects.get(id=3), # ファーンリッジ
+        description="業務アプリケーション開発"
+    )
+    MyHistoryModel.objects.update_or_create(
+        name=MyHistoryNameModel.objects.get(id=3), # ファーンリッジ
+        description="フロントエンドの開発(HTML, CSS, JavaScript等)"
+    )
+    MyHistoryModel.objects.update_or_create(
+        name=MyHistoryNameModel.objects.get(id=3), # ファーンリッジ
+        description="バックエンドの開発(VB.NET)"
+    )
+    MyHistoryModel.objects.update_or_create(
+        name=MyHistoryNameModel.objects.get(id=4), # テクノブレイブ
+        description="業務アプリケーション開発(VB.NET, SPREAD, SQLServer等)"
+    )
+    MyHistoryModel.objects.update_or_create(
+        name=MyHistoryNameModel.objects.get(id=5), # ゲオホールディングス
+        description="野良アプリ(ACCESS、VBA)のSQL解析/解析仕様書の作成"
+    )
+    MyHistoryModel.objects.update_or_create(
+        name=MyHistoryNameModel.objects.get(id=6), # 青山
+        description="Git、Githubを用いたバージョン管理経験(プル、プルリク、プッシュ、コードレビュー等)"
+    )
+    MyHistoryModel.objects.update_or_create(
+        name=MyHistoryNameModel.objects.get(id=6), # 青山
+        description="Dockerを用いた仮想化コンテナ技術経験"
+    )
+    MyHistoryModel.objects.update_or_create(
+        name=MyHistoryNameModel.objects.get(id=6), # 青山
+        description="Python, Streamlit, Django, RESTAPIを用いたWEBアプリケーション開発"
+    )
+    MyHistoryModel.objects.update_or_create(
+        name=MyHistoryNameModel.objects.get(id=6), # 青山
+        description="Azure App Serviceを用いたデプロイ、環境設定、githubとの自動デプロイ設定等の経験"
+    )
+
+
+def insert_SkillModel():
+    """
+    SkillModelの一括登録
+    """
+    SkillModel.objects.update_or_create(
+        category=SkillCategoryModel.objects.get(name="バックエンド"), 
+        name=SkillNameModel.objects.get(name="Python"),
+        level=SkillLevelModel.objects.get(name=3), # レベル3
+        period=SkillPeriodModel.objects.get(id=3), # 1年=3年未満
+    )
+    SkillModel.objects.update_or_create(
+        category=SkillCategoryModel.objects.get(name="フロントエンド"), 
+        name=SkillNameModel.objects.get(name="BootStrap"),
+        level=SkillLevelModel.objects.get(name=3), # レベル3
+        period=SkillPeriodModel.objects.get(id=3), # 1年=3年未満
+    )
+    SkillModel.objects.update_or_create(
+        category=SkillCategoryModel.objects.get(name="データベース"), 
+        name=SkillNameModel.objects.get(name="SQLServer"),
+        level=SkillLevelModel.objects.get(name=3), # レベル3
+        period=SkillPeriodModel.objects.get(id=4), # 3年～5年未満
+    )
+    
