@@ -3,7 +3,7 @@
 """
 from typing import Any
 from django.views.generic import TemplateView
-from ..models import MyHistoryModel, SkillModel, MenuModel
+from ..models import MyHistoryModel, SkillModel, MenuModel, MyProfileModel
 from itertools import zip_longest
 from collections import defaultdict
 
@@ -12,6 +12,9 @@ class HomeView(TemplateView):
     
     def get_context_data(self, **kwargs: Any) -> dict[str, Any]:
         context = super().get_context_data(**kwargs)
+        
+        # 自己紹介文
+        context["profile_texts"] = MyProfileModel.objects.all()
         
         # 歴史情報取得
         histories = MyHistoryModel.objects.all()
@@ -48,7 +51,6 @@ class HomeView(TemplateView):
             {'name': 'プロジェクトD', 'description': 'クラウドインテグレーションプロジェクト', 'language': 'AWS, Python', 'position': 'クラウドエンジニア', 'size': 8},
             {'name': 'プロジェクトE', 'description': 'AI開発プロジェクト', 'language': 'Python, TensorFlow', 'position': 'リードエンジニア', 'size': 12},
             {'name': 'プロジェクトF', 'description': '機械学習プロジェクト', 'language': 'Python, Scikit-learn', 'position': 'データサイエンティスト', 'size': 6},
-            # 他のプロジェクトをここに追加...
         ]
         
         args = [iter(projects)] * 3

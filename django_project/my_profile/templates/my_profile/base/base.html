@@ -16,7 +16,7 @@
     <!-- ヘッダー設定 -->
     <header>
         <div class="profile-section text-center">
-            <img src="" alt="Profile Image">
+            <img src="" alt="">
         </div>
     </header>
     <div class="nav-container">
@@ -24,8 +24,8 @@
             <ul class="nav justify-content-center">
                 {% for name, image in menu %}
                     <li class="nav-item">
-                        <a class="nav-link text-white fs-3" href="#">
-                            <img src="" alt="" class="menu-icon">
+                        <a class="nav-link text-black fs-3" href="#">
+                            <img src="{{ image.url }}" alt="" class="menu-icon">
                             {{ name }}
                         </a>
                     </li>
@@ -39,10 +39,14 @@
         {% for name, image in menu %}
             <!-- メインコンテナ設定 -->
             <div class="container-fluid mt-5 text-center">
-                <!-- タイトル --> 
-                <a class="fs-1 text-black" href="#" style="text-decoration: none;">
-                    <img src="" alt="#" style="border: 1px solid; text-align: center; align-items: center;">
+                <!-- タイトル -->
+                <!-- <a class="fs-1 text-black" href="#" style="text-decoration: none;">
+                    <img src="{{ image.url }}" alt="#" class="menu-icon">
                     {{ name }}
+                </a> -->
+                <a class="fs-1 text-black d-flex align-items-center justify-content-center" href="#" style="text-decoration: none; margin-bottom: 5px;">
+                    <img src="{{ image.url }}" alt="#" class="menu-icon me-2">
+                    <span style="color: #333333;">{{ name }}</span>
                 </a>
                 <!-- 各コンテンツの設定内容 -->
                 {% render_dynamic_template name context %}

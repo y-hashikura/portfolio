@@ -20,7 +20,7 @@ class MyProfileModel(models.Model):
     """
     ホーム情報を管理するモデル
     """
-    profile_text = models.TextField(max_length=2000, verbose_name="自己紹介文")
+    profile_text = models.CharField(blank=True, null=True, max_length=60, verbose_name="自己紹介文")
     
     def __str__(self):
         return self.profile_text
@@ -140,7 +140,7 @@ class MenuModel(models.Model):
     メニューリンクを管理するモデル
     """
     name = models.CharField(max_length=20, verbose_name="メニュー名")
-    image = models.ImageField(upload_to="images/" , blank=True, null=True, verbose_name="メニュー画像")
+    image = models.FileField(upload_to='icons/', blank=True, null=True, verbose_name="メニューアイコン")
     
     def __str__(self):
         return self.name

@@ -1,6 +1,8 @@
 from django.db.models.signals import post_migrate
+from datetime import date
 from django.dispatch import receiver
 from .models import (
+    MyProfileModel,
     SkillCategoryModel, 
     SkillNameModel, 
     SkillLevelModel, 
@@ -9,7 +11,8 @@ from .models import (
     PositionModel,
     MyHistoryNameModel,
     MyHistoryModel,
-    MenuModel
+    MenuModel,
+    ProjectModel
 )
 
 def get_skill_categorys() -> list[str]:
@@ -22,7 +25,7 @@ def get_skill_categorys() -> list[str]:
         "データベース", 
         "フレームワーク", 
         "クラウド", 
-        "バージョン管理", 
+        "管理ツール", 
         "テストツール", 
         "セキュリティ", 
         "コンテナ/仮想化", 
@@ -30,6 +33,7 @@ def get_skill_categorys() -> list[str]:
         "コンポーネントライブラリ", 
         "ETLツール",
         "開発エディタ",
+        "OS",
         "その他"
     ]
 
@@ -68,7 +72,11 @@ def get_skill_names() -> list[str]:
         "VS",
         "SQLServer",
         "Oracle",
-        "POSTGRESQL"
+        "POSTGRESQL",
+        "Windows",
+        "Linux",
+        "CentOs",
+        "Azure"
     ]
 
 def get_skill_periods() -> list[str]:
@@ -114,7 +122,6 @@ def get_my_menu() -> list[str]:
     """
     return ["HOME", "HISTORY", "SKILL", "PROJECT"]
 
-
 @receiver(post_migrate)
 def initialize_data(sender, **kwargs):
     """
@@ -153,6 +160,9 @@ def initialize_data(sender, **kwargs):
         
     # 歴史一括登録
     insert_MyHistoryModel()
+    
+    # 自己紹介文一括登録
+    insert_MyProfileModel()
     
 
 def insert_MyHistoryModel():
@@ -220,7 +230,6 @@ def insert_MyHistoryModel():
         description="Azure App Serviceを用いたデプロイ、環境設定、githubとの自動デプロイ設定等の経験"
     )
 
-
 def insert_SkillModel():
     """
     SkillModelの一括登録
@@ -228,12 +237,78 @@ def insert_SkillModel():
     SkillModel.objects.update_or_create(
         category=SkillCategoryModel.objects.get(name="バックエンド"), 
         name=SkillNameModel.objects.get(name="Python"),
+        level=SkillLevelModel.objects.get(name=3), 
+        period=SkillPeriodModel.objects.get(id=3), 
+    )
+    SkillModel.objects.update_or_create(
+        category=SkillCategoryModel.objects.get(name="バックエンド"), 
+        name=SkillNameModel.objects.get(name="VB.NET"),
+        level=SkillLevelModel.objects.get(name=4), 
+        period=SkillPeriodModel.objects.get(id=4), 
+    )
+    SkillModel.objects.update_or_create(
+        category=SkillCategoryModel.objects.get(name="バックエンド"), 
+        name=SkillNameModel.objects.get(name="Java"),
+        level=SkillLevelModel.objects.get(name=1), 
+        period=SkillPeriodModel.objects.get(id=1), 
+    )
+    SkillModel.objects.update_or_create(
+        category=SkillCategoryModel.objects.get(name="バックエンド"), 
+        name=SkillNameModel.objects.get(name="PHP"),
+        level=SkillLevelModel.objects.get(name=1), 
+        period=SkillPeriodModel.objects.get(id=1), 
+    )
+    SkillModel.objects.update_or_create(
+        category=SkillCategoryModel.objects.get(name="フロントエンド"), 
+        name=SkillNameModel.objects.get(name="JavaScript"),
+        level=SkillLevelModel.objects.get(name=2), 
+        period=SkillPeriodModel.objects.get(id=3), 
+    )
+    SkillModel.objects.update_or_create(
+        category=SkillCategoryModel.objects.get(name="フロントエンド"), 
+        name=SkillNameModel.objects.get(name="CSS"),
+        level=SkillLevelModel.objects.get(name=3), 
+        period=SkillPeriodModel.objects.get(id=3), 
+    )
+    SkillModel.objects.update_or_create(
+        category=SkillCategoryModel.objects.get(name="フロントエンド"), 
+        name=SkillNameModel.objects.get(name="HTML"),
+        level=SkillLevelModel.objects.get(name=2), 
+        period=SkillPeriodModel.objects.get(id=3), 
+    )
+    SkillModel.objects.update_or_create(
+        category=SkillCategoryModel.objects.get(name="フレームワーク"), 
+        name=SkillNameModel.objects.get(name="BootStrap"),
         level=SkillLevelModel.objects.get(name=3), # レベル3
         period=SkillPeriodModel.objects.get(id=3), # 1年=3年未満
     )
     SkillModel.objects.update_or_create(
-        category=SkillCategoryModel.objects.get(name="フロントエンド"), 
-        name=SkillNameModel.objects.get(name="BootStrap"),
+        category=SkillCategoryModel.objects.get(name="フレームワーク"), 
+        name=SkillNameModel.objects.get(name="Django"),
+        level=SkillLevelModel.objects.get(name=2), # レベル3
+        period=SkillPeriodModel.objects.get(id=3), # 1年=3年未満
+    )
+    SkillModel.objects.update_or_create(
+        category=SkillCategoryModel.objects.get(name="フレームワーク"), 
+        name=SkillNameModel.objects.get(name="REST API"),
+        level=SkillLevelModel.objects.get(name=1), # レベル3
+        period=SkillPeriodModel.objects.get(id=2), # 1年=3年未満
+    )
+    SkillModel.objects.update_or_create(
+        category=SkillCategoryModel.objects.get(name="フレームワーク"), 
+        name=SkillNameModel.objects.get(name="FastAPI"),
+        level=SkillLevelModel.objects.get(name=1), # レベル3
+        period=SkillPeriodModel.objects.get(id=2), # 1年=3年未満
+    )
+    SkillModel.objects.update_or_create(
+        category=SkillCategoryModel.objects.get(name="フレームワーク"), 
+        name=SkillNameModel.objects.get(name="ASP.NET"),
+        level=SkillLevelModel.objects.get(name=3), # レベル3
+        period=SkillPeriodModel.objects.get(id=4), # 1年=3年未満
+    )
+    SkillModel.objects.update_or_create(
+        category=SkillCategoryModel.objects.get(name="クラウド"), 
+        name=SkillNameModel.objects.get(name="Azure"),
         level=SkillLevelModel.objects.get(name=3), # レベル3
         period=SkillPeriodModel.objects.get(id=3), # 1年=3年未満
     )
@@ -243,4 +318,92 @@ def insert_SkillModel():
         level=SkillLevelModel.objects.get(name=3), # レベル3
         period=SkillPeriodModel.objects.get(id=4), # 3年～5年未満
     )
-    
+    SkillModel.objects.update_or_create(
+        category=SkillCategoryModel.objects.get(name="データベース"), 
+        name=SkillNameModel.objects.get(name="Oracle"),
+        level=SkillLevelModel.objects.get(name=1), # レベル3
+        period=SkillPeriodModel.objects.get(id=1), # 3年～5年未満
+    )
+    SkillModel.objects.update_or_create(
+        category=SkillCategoryModel.objects.get(name="データベース"), 
+        name=SkillNameModel.objects.get(name="POSTGRESQL"),
+        level=SkillLevelModel.objects.get(name=2), # レベル3
+        period=SkillPeriodModel.objects.get(id=2), # 3年～5年未満
+    )
+    SkillModel.objects.update_or_create(
+        category=SkillCategoryModel.objects.get(name="コンポーネントライブラリ"), 
+        name=SkillNameModel.objects.get(name="SPREAD"),
+        level=SkillLevelModel.objects.get(name=4), # レベル3
+        period=SkillPeriodModel.objects.get(id=3), # 3年～5年未満
+    )
+    SkillModel.objects.update_or_create(
+        category=SkillCategoryModel.objects.get(name="ETLツール"), 
+        name=SkillNameModel.objects.get(name="SSIS"),
+        level=SkillLevelModel.objects.get(name=1), # レベル3
+        period=SkillPeriodModel.objects.get(id=1), # 3年～5年未満
+    )
+    SkillModel.objects.update_or_create(
+        category=SkillCategoryModel.objects.get(name="コンテナ/仮想化"), 
+        name=SkillNameModel.objects.get(name="Docker"),
+        level=SkillLevelModel.objects.get(name=3), # レベル3
+        period=SkillPeriodModel.objects.get(id=3), # 3年～5年未満
+    )
+    SkillModel.objects.update_or_create(
+        category=SkillCategoryModel.objects.get(name="コンテナ/仮想化"), 
+        name=SkillNameModel.objects.get(name="VMWare"),
+        level=SkillLevelModel.objects.get(name=1), # レベル3
+        period=SkillPeriodModel.objects.get(id=1), # 3年～5年未満
+    )
+    SkillModel.objects.update_or_create(
+        category=SkillCategoryModel.objects.get(name="WEBサーバ"), 
+        name=SkillNameModel.objects.get(name="IIS"),
+        level=SkillLevelModel.objects.get(name=1), # レベル3
+        period=SkillPeriodModel.objects.get(id=1), # 3年～5年未満
+    )
+    SkillModel.objects.update_or_create(
+        category=SkillCategoryModel.objects.get(name="管理ツール"), 
+        name=SkillNameModel.objects.get(name="Backlog"),
+        level=SkillLevelModel.objects.get(name=4), # レベル3
+        period=SkillPeriodModel.objects.get(id=3), # 3年～5年未満
+    )
+    SkillModel.objects.update_or_create(
+        category=SkillCategoryModel.objects.get(name="管理ツール"), 
+        name=SkillNameModel.objects.get(name="Git"),
+        level=SkillLevelModel.objects.get(name=4), # レベル3
+        period=SkillPeriodModel.objects.get(id=4), # 3年～5年未満
+    )
+    SkillModel.objects.update_or_create(
+        category=SkillCategoryModel.objects.get(name="管理ツール"), 
+        name=SkillNameModel.objects.get(name="Github"),
+        level=SkillLevelModel.objects.get(name=3), # レベル3
+        period=SkillPeriodModel.objects.get(id=3), # 3年～5年未満
+    )
+    SkillModel.objects.update_or_create(
+        category=SkillCategoryModel.objects.get(name="OS"), 
+        name=SkillNameModel.objects.get(name="Windows"),
+        level=SkillLevelModel.objects.get(name=3), # レベル3
+        period=SkillPeriodModel.objects.get(id=3), # 3年～5年未満
+    )
+    SkillModel.objects.update_or_create(
+        category=SkillCategoryModel.objects.get(name="OS"), 
+        name=SkillNameModel.objects.get(name="Linux"),
+        level=SkillLevelModel.objects.get(name=3), # レベル3
+        period=SkillPeriodModel.objects.get(id=3), # 3年～5年未満
+    )
+    SkillModel.objects.update_or_create(
+        category=SkillCategoryModel.objects.get(name="OS"), 
+        name=SkillNameModel.objects.get(name="CentOs"),
+        level=SkillLevelModel.objects.get(name=2), # レベル3
+        period=SkillPeriodModel.objects.get(id=2), # 3年～5年未満
+    )
+
+def insert_MyProfileModel():
+    """
+    自己紹介文一括登録(最大10行)
+    """
+    MyProfileModel.objects.update_or_create(profile_text="はじめまして。平成8年生まれ 橋倉佳希と申します。")
+    MyProfileModel.objects.update_or_create(profile_text="この度はWEB訪問頂きありがとうございます。")
+    MyProfileModel.objects.update_or_create(profile_text="私は主にバックエンドエンジニアとして、業務システムやWEBアプリケーションの開発に携わってきました。")
+    MyProfileModel.objects.update_or_create(profile_text="現在は、フルスタックエンジニアとしてスキルを磨くため、TypeScriptやReactの学習も並行で進めております。")
+    MyProfileModel.objects.update_or_create(profile_text="また、AzureやAWS等のクラウド技術の習得にも力を入れております。")
+    MyProfileModel.objects.update_or_create(profile_text="元々VB.NETによる開発が多かったのですが、スキルチェンジを図りPythonを新たに学習しており、案件に参画中です。")

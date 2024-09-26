@@ -1,6 +1,4 @@
-<p class="fs-4 lh-lg">はじめまして。平成8年生まれ 橋倉佳希と申します。</p>
-<p class="fs-4 lh-lg">この度はWEB訪問頂きありがとうございます。</p>
-<p class="fs-4 lh-lg">私は主にバックエンドエンジニアとして、業務システムやWEBアプリケーションの開発に携わってきました。</p>
-<p class="fs-4 lh-lg">現在は、フルスタックエンジニアとしてスキルを磨くため、TypeScriptやReactの学習も並行で進めております。</p>
-<p class="fs-4 lh-lg">また、AzureやAWS等のクラウド技術の習得にも力を入れております。</p>
-<p class="fs-4 lh-lg">元々VB.NETによる開発が多かったのですが、スキルチェンジを図りPythonを新たに学習しており、案件に参画中です。</p>
+
+{% for profile_text in profile_texts %}
+    <p class="fs-4 lh-lg">{{ profile_text }}</p>
+{% endfor %}

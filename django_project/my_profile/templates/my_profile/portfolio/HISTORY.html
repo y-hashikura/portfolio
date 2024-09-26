@@ -9,11 +9,17 @@
                     data-bs-target="#flush-collapse-{{ forloop.counter }}"
                     aria-expanded="false"
                     aria-controls="flush-collapse-{{ forloop.counter }}"
+                    style="background-color: floralwhite; color: #3E3E3E;"
                 >
                     {{ name }}
                 </button>
             </h2>
-            <div id="flush-collapse-{{ forloop.counter }}" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+            <div 
+                id="flush-collapse-{{ forloop.counter }}" 
+                class="accordion-collapse collapse" 
+                data-bs-parent="#accordionFlushExample" 
+                style="background-color: #F0EAD6;"
+            >
                 <div class="accordion-body">
                     <div style="text-align: left;">
                         <ul>
