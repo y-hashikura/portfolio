@@ -3,8 +3,7 @@
 """
 from typing import Any
 from django.views.generic import TemplateView
-from ..models import MyHistoryModel, SkillModel, MenuModel, MyProfileModel
-from itertools import zip_longest
+from ..models import MyHistoryModel, SkillModel, MenuModel, MyProfileModel, ProjectModel
 from collections import defaultdict
 
 class HomeView(TemplateView):
@@ -41,21 +40,21 @@ class HomeView(TemplateView):
             result.append((menu.name, menu.image))
         context["menu"] = result
         
+        # プロジェクトデータ取得
+        projects = ProjectModel.objects.all()
+        # # 3件毎に管理
+        # result = defaultdict(list)
+        # count = 0
+        # for index, project in enumerate(projects, start=1):
+        #     if index not in result and index % 3 == 1:
+        #         count += 1
+        #         result[count] = []
+            
+        #     result[count].append(project)
         
+        # context["projects"] = dict(result)
         
-        # サンプルデータ
-        projects = [
-            {'name': 'プロジェクトA', 'description': 'ウェブアプリ開発プロジェクト', 'language': 'Python, JavaScript', 'position': 'バックエンドエンジニア', 'size': 10},
-            {'name': 'プロジェクトB', 'description': 'モバイルアプリ開発プロジェクト', 'language': 'Swift, Kotlin', 'position': 'フロントエンドエンジニア', 'size': 5},
-            {'name': 'プロジェクトC', 'description': 'データ分析プロジェクト', 'language': 'R, Python', 'position': 'データサイエンティスト', 'size': 3},
-            {'name': 'プロジェクトD', 'description': 'クラウドインテグレーションプロジェクト', 'language': 'AWS, Python', 'position': 'クラウドエンジニア', 'size': 8},
-            {'name': 'プロジェクトE', 'description': 'AI開発プロジェクト', 'language': 'Python, TensorFlow', 'position': 'リードエンジニア', 'size': 12},
-            {'name': 'プロジェクトF', 'description': '機械学習プロジェクト', 'language': 'Python, Scikit-learn', 'position': 'データサイエンティスト', 'size': 6},
-        ]
-        
-        args = [iter(projects)] * 3
-
-        context["chunked_projects"] = list(zip_longest(*args))
+        context["projects"] = projects
         
         context["context"] = context
         

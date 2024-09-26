@@ -1,0 +1,2 @@
+id,password,last_login,is_superuser,username,first_name,last_name,email,is_staff,is_active,date_joined
+1,pbkdf2_sha256$870000$X67vmwlcdLtZyaM5zR8jFp$jEEacn6PvcqnXdxvnXnW8Z7ssGM8hK7Wo1B3BiRiomk=,2024-09-26 09:01:33.523118+00:00,True,y-hashikura,,,y-hashikura@gmail.com,True,True,2024-09-26 09:01:07.521761+00:00

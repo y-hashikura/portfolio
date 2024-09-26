@@ -1,0 +1,73 @@
+id,name,content_type,codename
+1,Can add log entry,Administration | log entry,add_logentry
+2,Can change log entry,Administration | log entry,change_logentry
+3,Can delete log entry,Administration | log entry,delete_logentry
+4,Can view log entry,Administration | log entry,view_logentry
+9,Can add group,Authentication and Authorization | group,add_group
+10,Can change group,Authentication and Authorization | group,change_group
+11,Can delete group,Authentication and Authorization | group,delete_group
+12,Can view group,Authentication and Authorization | group,view_group
+5,Can add permission,Authentication and Authorization | permission,add_permission
+6,Can change permission,Authentication and Authorization | permission,change_permission
+7,Can delete permission,Authentication and Authorization | permission,delete_permission
+8,Can view permission,Authentication and Authorization | permission,view_permission
+13,Can add user,Authentication and Authorization | user,add_user
+14,Can change user,Authentication and Authorization | user,change_user
+15,Can delete user,Authentication and Authorization | user,delete_user
+16,Can view user,Authentication and Authorization | user,view_user
+17,Can add content type,Content Types | content type,add_contenttype
+18,Can change content type,Content Types | content type,change_contenttype
+19,Can delete content type,Content Types | content type,delete_contenttype
+20,Can view content type,Content Types | content type,view_contenttype
+25,Can add header model,My_Profile | header model,add_headermodel
+26,Can change header model,My_Profile | header model,change_headermodel
+27,Can delete header model,My_Profile | header model,delete_headermodel
+28,Can view header model,My_Profile | header model,view_headermodel
+29,Can add menu model,My_Profile | menu model,add_menumodel
+30,Can change menu model,My_Profile | menu model,change_menumodel
+31,Can delete menu model,My_Profile | menu model,delete_menumodel
+32,Can view menu model,My_Profile | menu model,view_menumodel
+61,Can add my history model,My_Profile | my history model,add_myhistorymodel
+62,Can change my history model,My_Profile | my history model,change_myhistorymodel
+63,Can delete my history model,My_Profile | my history model,delete_myhistorymodel
+64,Can view my history model,My_Profile | my history model,view_myhistorymodel
+33,Can add my history name model,My_Profile | my history name model,add_myhistorynamemodel
+34,Can change my history name model,My_Profile | my history name model,change_myhistorynamemodel
+35,Can delete my history name model,My_Profile | my history name model,delete_myhistorynamemodel
+36,Can view my history name model,My_Profile | my history name model,view_myhistorynamemodel
+37,Can add my profile model,My_Profile | my profile model,add_myprofilemodel
+38,Can change my profile model,My_Profile | my profile model,change_myprofilemodel
+39,Can delete my profile model,My_Profile | my profile model,delete_myprofilemodel
+40,Can view my profile model,My_Profile | my profile model,view_myprofilemodel
+41,Can add position model,My_Profile | position model,add_positionmodel
+42,Can change position model,My_Profile | position model,change_positionmodel
+43,Can delete position model,My_Profile | position model,delete_positionmodel
+44,Can view position model,My_Profile | position model,view_positionmodel
+65,Can add project model,My_Profile | project model,add_projectmodel
+66,Can change project model,My_Profile | project model,change_projectmodel
+67,Can delete project model,My_Profile | project model,delete_projectmodel
+68,Can view project model,My_Profile | project model,view_projectmodel
+45,Can add skill category model,My_Profile | skill category model,add_skillcategorymodel
+46,Can change skill category model,My_Profile | skill category model,change_skillcategorymodel
+47,Can delete skill category model,My_Profile | skill category model,delete_skillcategorymodel
+48,Can view skill category model,My_Profile | skill category model,view_skillcategorymodel
+49,Can add skill level model,My_Profile | skill level model,add_skilllevelmodel
+50,Can change skill level model,My_Profile | skill level model,change_skilllevelmodel
+51,Can delete skill level model,My_Profile | skill level model,delete_skilllevelmodel
+52,Can view skill level model,My_Profile | skill level model,view_skilllevelmodel
+69,Can add skill model,My_Profile | skill model,add_skillmodel
+70,Can change skill model,My_Profile | skill model,change_skillmodel
+71,Can delete skill model,My_Profile | skill model,delete_skillmodel
+72,Can view skill model,My_Profile | skill model,view_skillmodel
+53,Can add skill name model,My_Profile | skill name model,add_skillnamemodel
+54,Can change skill name model,My_Profile | skill name model,change_skillnamemodel
+55,Can delete skill name model,My_Profile | skill name model,delete_skillnamemodel
+56,Can view skill name model,My_Profile | skill name model,view_skillnamemodel
+57,Can add skill period model,My_Profile | skill period model,add_skillperiodmodel
+58,Can change skill period model,My_Profile | skill period model,change_skillperiodmodel
+59,Can delete skill period model,My_Profile | skill period model,delete_skillperiodmodel
+60,Can view skill period model,My_Profile | skill period model,view_skillperiodmodel
+21,Can add session,Sessions | session,add_session
+22,Can change session,Sessions | session,change_session
+23,Can delete session,Sessions | session,delete_session
+24,Can view session,Sessions | session,view_session

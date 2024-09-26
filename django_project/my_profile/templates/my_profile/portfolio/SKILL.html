@@ -1,5 +1,6 @@
 {% load custom_tags %}
 <div class="container mt-4" style="width: 50%;">
+    <h5>※各スキルをクリックすると詳細が見れます</h5>
     <table class="table table-striped" style="background-color: floralwhite;">
         <thead style="background-color: floralwhite; text-align: left;">
             <tr>
@@ -18,7 +19,7 @@
                     style="background-color: floralwhite; text-align: left;"
                 >
                     <td>{{ skill.category }}</td>
-                    <td>{{ skill.name }}</td>
+                    <td>{{ skill.name.name }}</td>
                     <td>{{ skill.period }}</td>
                     <td>
                         {% for i in 1|range_filter:6 %}
@@ -32,7 +33,32 @@
                 </tr>
                 <tr id="details-{{ skill.name }}" class="collapse">
                     <td colspan="4" style="text-align: left;">
-                        <strong>詳細内容:</strong> Pythonを使用して、Webアプリケーションの開発、データ処理、自動化スクリプトの作成などを行いました。
+                        {% if skill.name.description_1 %}
+                            <li>
+                                {{ skill.name.description_1 }}
+                            </li>
+                        {% endif %}
+                        {% if skill.name.description_2 %}
+                            <li>
+                                {{ skill.name.description_2 }}
+                            </li>
+                        {% endif %}
+                        {% if skill.name.description_3 %}
+                            <li>
+                                {{ skill.name.description_3 }}
+                            </li>
+                        {% endif %}
+                        {% if skill.name.description_4 %}
+                            <li>
+                                {{ skill.name.description_4 }}
+                            </li>
+                        {% endif %}
+                        {% if skill.name.description_5 %}
+                            <li>
+                                {{ skill.name.description_5 }}
+                            </li>
+                        {% endif %}
+                        
                     </td>
                 </tr>
             {% endfor %}

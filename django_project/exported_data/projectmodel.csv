@@ -1,0 +1,5 @@
+id,name,overview,back_ground,period_from,period_to,position,scale,descriptions1,descriptions2,descriptions3,descriptions4,descriptions5,descriptions6,descriptions7,descriptions8,descriptions9,descriptions10
+1,レポート取込/自動仕訳ツール,月次報告書のレポートを取込、自動仕訳処理を行いCSVを出力する。,特になし,2023-04-01,2024-10-31,フルスタックエンジニア,"PM 2名, SE 4名, PG 5名",アジャイル開発,フルスタックエンジニアとして、Djangoを用いたウェブアプリケーションの設計・開発,クラスベースビューを利用したテンプレート、ビュー、モデル、カスタムタグの実装,Azure環境の整備と自動デプロイの導入による開発効率の向上,Dockerを使用した開発環境の構築とコンテナ管理,Pythonによるスクリプト作成やデータ処理業務の実施,,,,
+2,アプリ解析,"野良アプリ(ACCESS, VBA)のSQLを解析し、仕様書の逆起こしを実施。",特になし,2022-10-01,2023-03-31,その他,"PM 1名, その他 10名",野良アプリは約300個くらいあったのでチームで協力して作業,,,,,,,,,
+3,開発支援,VB.NETでSPREAD、SQLServerのストアドを用いたシステム開発の支援,特になし,2022-01-01,2022-09-30,バックエンドエンジニア,"PM 1名, PL 1名, SE 2名, PG 3名, QA 1名",VB.NETでSPREADを活用した開発,SQLServerでストアドを活用した開発,Gitによるコード管理,,,,,,,
+4,test用,テスト用,テスト用,2024-09-26,2024-09-26,フルスタックエンジニア,あまり,あ,あ,ああ,あ,ああ,あ,ああ,あ,ああ,あ
