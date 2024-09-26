@@ -1,15 +1,4 @@
 {% load custom_tags %}
-
-<style>
-.carousel-control-prev-icon,
-.carousel-control-next-icon {
-    background-color: black;
-    width: 50px;   /* 矢印の幅 */
-    height: 50px;  /* 矢印の高さ */
-    align-items: center;
-    justify-items: center;
-}
-</style>
 <div id="projectCarousel" class="carousel slide" data-bs-ride="carousel">
     <div class="carousel-inner">
         <!-- 繰り返し処理の開始: 各プロジェクトのセットごとにcarousel-itemを作成 -->
@@ -72,8 +61,6 @@
             </div>
         {% endfor %}
     </div>
-
-    <!-- Carousel controls -->
     <button class="carousel-control-prev carousel-control-prev-icon" type="button" data-bs-target="#projectCarousel" data-bs-slide="prev">
         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
         <span class="visually-hidden">Previous</span>

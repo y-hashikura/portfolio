@@ -42,3 +42,12 @@ body {
     border-radius: 50%;
     border: 2px solid black;
 }
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    background-color: black;
+    width: 50px;   /* 矢印の幅 */
+    height: 50px;  /* 矢印の高さ */
+    align-items: center;
+    justify-items: center;
+}
